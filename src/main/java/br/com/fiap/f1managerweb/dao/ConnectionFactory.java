@@ -11,7 +11,8 @@ public class ConnectionFactory { //Classe responsável para criar a conexão com
         Connection conexao = null;
 
         try {
-            conexao = DriverManager.getConnection( //DriverManager abre a conexão com o banco
+            //DriverManager abre a conexão com o banco
+            conexao = DriverManager.getConnection(
                     "jdbc:oracle:thin:@oracle.fiap.com.br:1521:orcl",
                     "RM571713",
                     "250807"
