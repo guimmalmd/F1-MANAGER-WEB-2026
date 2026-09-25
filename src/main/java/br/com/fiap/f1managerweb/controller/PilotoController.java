@@ -8,19 +8,37 @@ import org.springframework.http.HttpStatus;
 
 import java.util.List;
 
-@RestController
-@RequestMapping("/pilotos") //Define o começo de todas as rotas
-public class PilotoController {
+@RestController //Diz ao Spring que a classe recebe requisições web e devolve respostas
+@RequestMapping("/pilotos") //Define o endereço base do Controller | Nesse caso todos os métodos começam com /pilotos
 
-    private final PilotoService pilotoService = new PilotoService();
+public class PilotoController { //O Controller recebe os pedidos HTTP | Porta de entrada da API
+    /*
+    Recebe requisições HTTP como:
+    GET - Pede para ver
+    POST - Cria
+    PUT - Atualiza
+    DELETE - Exclui
+     **/
 
+    /*
+    Controller - Recebe o pedido
+    Service - Decide se pode
+    DAO - mexe no banco
+    */
+
+    private final PilotoService pilotoService = new PilotoService(); //Controller não deve conversar diretamente com o DAO, o correto é Controller - Service - DAO | Então ele pede que o Service resolva para ele
+
+    //
     @GetMapping
     public ResponseEntity<List<Piloto>> listar() {
-        return ResponseEntity.ok(pilotoService.listar());
+        return ResponseEntity.ok(pilotoService.listar()); //Aqui ele pede para o Service e o Service pede ao DAO
     }
+    //ResponseEntity representa toda a resposta HTTP que o servidor envia de volta para o cliente
+    //O 'ok' é do status HTTP, ex: 200 OK
 
+    //Define que começa com /numero | ex: /pilotos/12
     @GetMapping("/{numero}")
-    public ResponseEntity<Piloto> buscarPorNumero(@PathVariable int numero) {
+    public ResponseEntity<Piloto> buscarPorNumero(@PathVariable int numero) { //PathVariable pega numero que veio na URL
 
         Piloto piloto = pilotoService.buscarPorNumero(numero);
 

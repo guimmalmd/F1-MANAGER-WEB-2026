@@ -4,14 +4,14 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class ConnectionFactory {
+public class ConnectionFactory { //Classe responsável para criar a conexão com o banco
 
     public static Connection obterConexao() {
 
         Connection conexao = null;
 
         try {
-            conexao = DriverManager.getConnection(
+            conexao = DriverManager.getConnection( //DriverManager abre a conexão com o banco
                     "jdbc:oracle:thin:@oracle.fiap.com.br:1521:orcl",
                     "RM571713",
                     "250807"

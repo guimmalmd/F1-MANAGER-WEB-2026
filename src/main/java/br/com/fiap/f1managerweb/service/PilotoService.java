@@ -6,23 +6,27 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service //Avisa o Spring que essa classe representa a camada de serviço
-public class PilotoService {
+@Service //Só avisa o Spring que essa classe representa a camada de serviço
+public class PilotoService { //Service aplica regras
 
-    private final PilotoDAO pilotoDAO;
+    private final PilotoDAO pilotoDAO; //Depois de validar as regras, o Service faz pedidos ao DAO para fazer determinadas ações dentro do banco
+    //Service decide | DAO executa no banco
 
     public PilotoService() {
         this.pilotoDAO = new PilotoDAO();
     }
 
+    //LISTAR
     public List<Piloto> listar() {
-        return pilotoDAO.listar();
+        return pilotoDAO.listar(); //Service só pede para listar os pilotos
     }
 
+    //BUSCAR
     public Piloto buscarPorNumero(int numero) {
         return pilotoDAO.buscarPorNumero(numero);
     }
 
+    //CADASTRAR - CREATE
     public void cadastrar(Piloto piloto) {
 
         if (piloto.getNumero() == 0) {
@@ -36,6 +40,7 @@ public class PilotoService {
         pilotoDAO.cadastrar(piloto);
     }
 
+    //ATUALIZAR | UPDATE
     public void atualizar(int numero, Piloto piloto) {
 
         if (numero != piloto.getNumero()) {
@@ -53,6 +58,7 @@ public class PilotoService {
         pilotoDAO.alterar(piloto);
     }
 
+    //EXCLUIR
     public void excluir(int numero) {
 
         Piloto pilotoExiste = buscarPorNumero(numero);

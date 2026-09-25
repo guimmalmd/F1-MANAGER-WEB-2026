@@ -1,0 +1,134 @@
+Meu banco no SQL Developer está assim:
+
+CREATE TABLE TBL_PILOTO_F1 (
+    NOME VARCHAR2(100) NOT NULL,
+    NUMERO NUMBER(3) PRIMARY KEY,
+    EQUIPE VARCHAR2(100) NOT NULL,
+    NACIONALIDADE VARCHAR2(50) NOT NULL,
+    PONTOS NUMBER(6,2)
+);
+
+------------------------------------------------------------------------------------------------
+
+-- MERCEDES
+INSERT INTO TBL_PILOTO_F1
+(NOME, NUMERO, EQUIPE, NACIONALIDADE, PONTOS)
+VALUES ('Kimi Antonelli', 12, 'Mercedes', 'Italiano', 292);
+
+INSERT INTO TBL_PILOTO_F1
+(NOME, NUMERO, EQUIPE, NACIONALIDADE, PONTOS)
+VALUES ('George Russell', 63, 'Mercedes', 'Britanico', 211);
+
+-- FERRARI
+INSERT INTO TBL_PILOTO_F1
+(NOME, NUMERO, EQUIPE, NACIONALIDADE, PONTOS)
+VALUES ('Lewis Hamilton', 44, 'Ferrari', 'Britanico', 191);
+
+INSERT INTO TBL_PILOTO_F1
+(NOME, NUMERO, EQUIPE, NACIONALIDADE, PONTOS)
+VALUES ('Charles Leclerc', 16, 'Ferrari', 'Monegasco', 167);
+
+
+-- MCLAREN
+INSERT INTO TBL_PILOTO_F1
+(NOME, NUMERO, EQUIPE, NACIONALIDADE, PONTOS)
+VALUES ('Lando Norris', 1, 'McLaren', 'Britanico', 186);
+
+INSERT INTO TBL_PILOTO_F1
+(NOME, NUMERO, EQUIPE, NACIONALIDADE, PONTOS)
+VALUES ('Oscar Piastri', 81, 'McLaren', 'Australiano', 120);
+
+
+-- RED BULL RACING
+INSERT INTO TBL_PILOTO_F1
+(NOME, NUMERO, EQUIPE, NACIONALIDADE, PONTOS)
+VALUES ('Max Verstappen', 3, 'Red Bull Racing', 'Holandes', 145);
+
+INSERT INTO TBL_PILOTO_F1
+(NOME, NUMERO, EQUIPE, NACIONALIDADE, PONTOS)
+VALUES ('Isack Hadjar', 6, 'Red Bull Racing', 'Frances', 71);
+
+
+-- RACING BULLS
+INSERT INTO TBL_PILOTO_F1
+(NOME, NUMERO, EQUIPE, NACIONALIDADE, PONTOS)
+VALUES ('Liam Lawson', 30, 'Racing Bulls', 'Neozelandes', 59);
+
+INSERT INTO TBL_PILOTO_F1
+(NOME, NUMERO, EQUIPE, NACIONALIDADE, PONTOS)
+VALUES ('Arvid Lindblad', 41, 'Racing Bulls', 'Britanico', 31);
+
+
+-- ALPINE
+INSERT INTO TBL_PILOTO_F1
+(NOME, NUMERO, EQUIPE, NACIONALIDADE, PONTOS)
+VALUES ('Pierre Gasly', 10, 'Alpine', 'Frances', 41);
+
+INSERT INTO TBL_PILOTO_F1
+(NOME, NUMERO, EQUIPE, NACIONALIDADE, PONTOS)
+VALUES ('Franco Colapinto', 43, 'Alpine', 'Argentino', 27);
+
+
+-- HAAS
+INSERT INTO TBL_PILOTO_F1
+(NOME, NUMERO, EQUIPE, NACIONALIDADE, PONTOS)
+VALUES ('Oliver Bearman', 87, 'Haas F1 Team', 'Britanico', 18);
+
+INSERT INTO TBL_PILOTO_F1
+(NOME, NUMERO, EQUIPE, NACIONALIDADE, PONTOS)
+VALUES ('Esteban Ocon', 31, 'Haas F1 Team', 'Frances', 3);
+
+
+-- AUDI
+INSERT INTO TBL_PILOTO_F1
+(NOME, NUMERO, EQUIPE, NACIONALIDADE, PONTOS)
+VALUES ('Gabriel Bortoleto', 5, 'Audi', 'Brasileiro', 10);
+
+INSERT INTO TBL_PILOTO_F1
+(NOME, NUMERO, EQUIPE, NACIONALIDADE, PONTOS)
+VALUES ('Nico Hulkenberg', 27, 'Audi', 'Alemao', 7);
+
+
+-- WILLIAMS
+INSERT INTO TBL_PILOTO_F1
+(NOME, NUMERO, EQUIPE, NACIONALIDADE, PONTOS)
+VALUES ('Carlos Sainz', 55, 'Williams', 'Espanhol', 6);
+
+INSERT INTO TBL_PILOTO_F1
+(NOME, NUMERO, EQUIPE, NACIONALIDADE, PONTOS)
+VALUES ('Alexander Albon', 23, 'Williams', 'Tailandes', 5);
+
+
+-- ASTON MARTIN
+INSERT INTO TBL_PILOTO_F1
+(NOME, NUMERO, EQUIPE, NACIONALIDADE, PONTOS)
+VALUES ('Fernando Alonso', 14, 'Aston Martin', 'Espanhol', 3);
+
+INSERT INTO TBL_PILOTO_F1
+(NOME, NUMERO, EQUIPE, NACIONALIDADE, PONTOS)
+VALUES ('Lance Stroll', 18, 'Aston Martin', 'Canadense', 0);
+
+
+-- CADILLAC
+INSERT INTO TBL_PILOTO_F1
+(NOME, NUMERO, EQUIPE, NACIONALIDADE, PONTOS)
+VALUES ('Sergio Perez', 11, 'Cadillac', 'Mexicano', 0);
+
+INSERT INTO TBL_PILOTO_F1
+(NOME, NUMERO, EQUIPE, NACIONALIDADE, PONTOS)
+VALUES ('Valtteri Bottas', 77, 'Cadillac', 'Finlandes', 0);
+
+------------------------------------------------------------------------------------------------
+
+SELECT * FROM TBL_PILOTO_F1;
+
+SELECT NOME as Nome, NUMERO as Número, EQUIPE as Equipe, NACIONALIDADE as País, PONTOS as Pontuação
+FROM TBL_PILOTO_F1
+ORDER BY PONTOS DESC;
+
+COMMIT;
+
+-- Teste delete
+DELETE FROM TBL_PILOTO_F1
+WHERE NUMERO = 11;
+COMMIT;

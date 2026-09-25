@@ -9,13 +9,14 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PilotoDAO {
+public class PilotoDAO { //DAO Conversa com o Banco
 
-    private Connection conexao;
+    private Connection conexao; //Connection é a conexão com o banco
 
+    //CADASTRAR - CREATE
     public void cadastrar(Piloto piloto) {
 
-        conexao = ConnectionFactory.obterConexao();
+        conexao = ConnectionFactory.obterConexao(); //Pega os dados de obterConexao() = dados de login do banco
 
         try {
             String sql = """
@@ -24,7 +25,7 @@ public class PilotoDAO {
                     VALUES (?, ?, ?, ?, ?)
                     """;
 
-            PreparedStatement ps = conexao.prepareStatement(sql);
+            PreparedStatement ps = conexao.prepareStatement(sql); //Prepara SQL para a execução
 
             ps.setString(1, piloto.getNome());
             ps.setInt(2, piloto.getNumero());
@@ -42,6 +43,7 @@ public class PilotoDAO {
         }
     }
 
+    //BUSCAR
     public Piloto buscarPorNumero(int numero) {
 
         conexao = ConnectionFactory.obterConexao();
@@ -81,6 +83,7 @@ public class PilotoDAO {
         return piloto;
     }
 
+    //LISTAR
     public List<Piloto> listar() {
 
         conexao = ConnectionFactory.obterConexao();
@@ -118,6 +121,7 @@ public class PilotoDAO {
         return pilotos;
     }
 
+    //ALTERAR | UPDATE
     public void alterar(Piloto piloto) {
 
         conexao = ConnectionFactory.obterConexao();
@@ -150,10 +154,12 @@ public class PilotoDAO {
         }
     }
 
+    //EXCLUIR | REMOVE
     public void excluir(int numero) {
 
         conexao = ConnectionFactory.obterConexao();
 
+        //try catch tratam erros que podem acontecer durante o andamento do programa
         try {
             String sql = """
                     DELETE FROM TBL_PILOTO_F1
@@ -169,8 +175,10 @@ public class PilotoDAO {
             ps.close();
             conexao.close();
 
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+        } catch (SQLException e) { //SQLException representa qualquer erro relacionado ao Banco de Dados | 'e' é uma variável que guarda os detalhes do erro
+            //Impede que continue com os erros que apareceram
+            throw new RuntimeException(e); //RuntimeException = pacote | 'e' = conteúdo dentro do pacote
+
         }
     }
 }
